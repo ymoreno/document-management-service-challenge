@@ -1,0 +1,99 @@
+{
+	"info": {
+		"_postman_id": "b68361b7-1a3b-4f52-be12-e62f3ef975dc",
+		"name": "docManager",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "708381"
+	},
+	"item": [
+		{
+			"name": "upload",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/Users/yesidmoreno/Downloads/10mb.pdf"
+						},
+						{
+							"key": "metadata",
+							"value": "{\n    \"user\": \"john_doe\",\n    \"documentName\": \"10mb.pdf\",\n    \"tags\": [\"important\", \"finance\", \"2023\"]\n}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/document/upload",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"document",
+						"upload"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "query filtered document",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"user\": \"john_doe\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/document",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"document"
+					]
+				},
+				"description": "Generated from cURL: curl --location 'http://localhost:8080/document/upload' \\\n--form 'file=@\"/Users/yesidmoreno/Downloads/pdf-test.pdf\"' \\\n--form 'metadata={\"user\":\"john_doe\",\"documentName\":\"pdf-test.pdf\",\"tags\":[\"important\",\"finance\",\"2023\"]};type=application/json'\n"
+			},
+			"response": []
+		},
+		{
+			"name": "download",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/document/e00b9ab8-ceb2-46b2-9c06-fed4d7ad82cd/download",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"document",
+						"e00b9ab8-ceb2-46b2-9c06-fed4d7ad82cd",
+						"download"
+					]
+				},
+				"description": "Generated from cURL: curl -X GET \"http://localhost:8080/documents/a1b2c3d4-e5f6-7g8h-9i0j-k1l2m3n4o5p6/download\""
+			},
+			"response": []
+		}
+	]
+}
